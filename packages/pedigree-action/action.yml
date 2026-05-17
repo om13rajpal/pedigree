@@ -1,0 +1,78 @@
+# Composite GitHub Action for CI-side attestation verification.
+#
+# Verifies that every commit in a pull request carries a valid in-toto
+# attestation of type dev.pedigree/ai-authorship/v1. Blocks merges when
+# attestations are missing, malformed, or have unsatisfied policies.
+
+name: 'Pedigree Verify'
+description: 'Verify cryptographic provenance for every commit in a PR'
+branding:
+  icon: 'shield'
+  color: 'green'
+
+inputs:
+  predicate-type:
+    description: 'in-toto predicate type to require'
+    required: false
+    default: 'dev.pedigree/ai-authorship/v1'
+  fail-on-unsigned:
+    description: 'Fail the action if any commit is unsigned'
+    required: false
+    default: 'true'
+  comment-on-pr:
+    description: 'Post a comment summarizing verification results'
+    required: false
+    default: 'true'
+  mcp-path:
+    description: 'Path to the pedigree-mcp package (relative to repo root)'
+    required: false
+    default: 'packages/pedigree-mcp'
+
+outputs:
+  passed:
+    description: 'true if all commits verified, false otherwise'
+    value: ${{ steps.verify.outputs.passed }}
+  report-json:
+    description: 'JSON report of per-commit verification status'
+    value: ${{ steps.verify.outputs.report_json }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      shell: bash
+      run: |
+        chmod +x "${{ github.action_path }}/scripts/install-deps.sh"
+        "${{ github.action_path }}/scripts/install-deps.sh" \
+          "${{ github.workspace }}/${{ inputs.mcp-path }}"
+
+    - name: Verify attestation chain
+      id: verify
+      shell: bash
+      env:
+        FAIL_ON_UNSIGNED: ${{ inputs.fail-on-unsigned }}
+        PREDICATE_TYPE: ${{ inputs.predicate-type }}
+        MCP_PATH: ${{ github.workspace }}/${{ inputs.mcp-path }}
+      run: |
+        chmod +x "${{ github.action_path }}/scripts/verify.sh"
+        "${{ github.action_path }}/scripts/verify.sh"
+
+    - name: Post PR comment
+      if: >-
+        inputs.comment-on-pr == 'true' &&
+        github.event_name == 'pull_request' &&
+        always()
+      shell: bash
+      env:
+        GH_TOKEN: ${{ github.token }}
+        REPORT_JSON: ${{ steps.verify.outputs.report_json }}
+        PR_NUMBER: ${{ github.event.pull_request.number }}
+        REPO: ${{ github.repository }}
+      run: |
+        chmod +x "${{ github.action_path }}/scripts/post-comment.sh"
+        "${{ github.action_path }}/scripts/post-comment.sh"

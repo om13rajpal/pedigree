@@ -1,0 +1,5 @@
+[allowlist]
+description = "Allow ed25519 public key fingerprints in Bob session exports"
+paths = [
+  '''bob_sessions/.*\.md''',
+]

@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "authorship": {
+    "kind": "ai-autonomous",
+    "humanShare": null
+  },
+  "agent": {
+    "tool": "ibm-bob",
+    "toolVersion": "1.0.0",
+    "model": "claude-3-7-sonnet-20250219",
+    "modelProvider": "anthropic"
+  },
+  "execution": {
+    "modeSlug": "advanced",
+    "skillHashes": [
+      {
+        "name": "sign-on-commit",
+        "sha256": "acf722f3645075ce000cf1a4e285a700350f2c5a2684cc4929718a6d579ae17b"
+      }
+    ],
+    "agentsMdHash": "sha256:3c1e93d40e0a0cfc863fcedab960c70c457b1fa318d1a4969f0a237e410737ce",
+    "promptHash": "sha256:42251b8413b6be229d450fdc69f8877f52f5721b46b984cc3d65775e116de9b5",
+    "planHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "bobSessionId": "00000000-0000-0000-0000-000000000000",
+    "bobcoinsConsumed": 0
+  },
+  "scope": {
+    "filesTouched": ["src/lib/utils.ts"],
+    "linesAdded": 37,
+    "linesDeleted": 0,
+    "riskClass": "medium"
+  },
+  "policy": {
+    "agentsMdPolicy": "v1",
+    "requiresHumanApproval": false,
+    "satisfied": true
+  }
+}

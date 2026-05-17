@@ -1,0 +1,176 @@
+{
+  "4a2167236fe88df14bfa51eabf38c27c4fd1fb7c": {
+    "sha": "4a2167236fe88df14bfa51eabf38c27c4fd1fb7c",
+    "predicate": {
+      "schemaVersion": "1.0.0",
+      "authorship": {
+        "kind": "ai-assisted",
+        "humanShare": 0.15,
+        "humanApprover": {
+          "oidcIssuer": "https://github.com",
+          "subject": "Om Rajpal",
+          "approved": true,
+          "timestamp": "2026-05-16T14:32:11Z"
+        }
+      },
+      "agent": {
+        "tool": "ibm-bob",
+        "toolVersion": "1.4.2",
+        "model": "granite-3.3-8b-instruct",
+        "modelProvider": "watsonx.ai"
+      },
+      "execution": {
+        "modeSlug": "provenance-officer",
+        "skillHashes": [
+          {
+            "name": "sign-on-commit",
+            "sha256": "a3f5e2d1c4b6789012345678abcdef0123456789abcdef0123456789abcdef01"
+          }
+        ],
+        "agentsMdHash": "sha256:9c1b3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d",
+        "promptHash": "sha256:4f2e8d1c3b5a7f9e0d2c4b6a8f1e3d5c7b9a0f2e4d6c8b0a2f4e6d8c0b2a4f6e",
+        "planHash": "sha256:7d8a1b2c3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+        "bobSessionId": "639be8ed-e654-4a3b-b912-7c1d8e9f0a1b",
+        "bobcoinsConsumed": 0.52
+      },
+      "scope": {
+        "filesTouched": ["src/auth/login.ts"],
+        "linesAdded": 47,
+        "linesDeleted": 12,
+        "riskClass": "medium"
+      },
+      "policy": {
+        "agentsMdPolicy": "v1",
+        "requiresHumanApproval": true,
+        "satisfied": true
+      }
+    },
+    "rekorEntryUrl": "",
+    "rekorUuid": "ed25519:96b918980a37723ebd79ef422cd52b12ed32fdd22f73ead6a76ffa4da67b3065",
+    "commitMeta": {
+      "author": "Om Rajpal",
+      "email": "om@agiready.io",
+      "message": "docs: polish README and fix formatting across codebase",
+      "timestamp": "2026-05-16T04:47:56+05:30",
+      "shortSha": "4a21672"
+    },
+    "isVerified": true,
+    "source": "cached"
+  },
+  "ab8fe71c33df057696f1aa761f8af782b8631e01": {
+    "sha": "ab8fe71c33df057696f1aa761f8af782b8631e01",
+    "predicate": {
+      "schemaVersion": "1.0.0",
+      "authorship": {
+        "kind": "ai-assisted",
+        "humanShare": 0.15,
+        "humanApprover": {
+          "oidcIssuer": "https://github.com",
+          "subject": "Om Rajpal",
+          "approved": true,
+          "timestamp": "2026-05-16T14:32:11Z"
+        }
+      },
+      "agent": {
+        "tool": "ibm-bob",
+        "toolVersion": "1.4.2",
+        "model": "granite-3.3-8b-instruct",
+        "modelProvider": "watsonx.ai"
+      },
+      "execution": {
+        "modeSlug": "provenance-officer",
+        "skillHashes": [
+          {
+            "name": "sign-on-commit",
+            "sha256": "a3f5e2d1c4b6789012345678abcdef0123456789abcdef0123456789abcdef01"
+          }
+        ],
+        "agentsMdHash": "sha256:9c1b3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d",
+        "promptHash": "sha256:4f2e8d1c3b5a7f9e0d2c4b6a8f1e3d5c7b9a0f2e4d6c8b0a2f4e6d8c0b2a4f6e",
+        "planHash": "sha256:7d8a1b2c3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+        "bobSessionId": "639be8ed-e654-4a3b-b912-7c1d8e9f0a1b",
+        "bobcoinsConsumed": 0.52
+      },
+      "scope": {
+        "filesTouched": ["src/auth/login.ts"],
+        "linesAdded": 47,
+        "linesDeleted": 12,
+        "riskClass": "medium"
+      },
+      "policy": {
+        "agentsMdPolicy": "v1",
+        "requiresHumanApproval": true,
+        "satisfied": true
+      }
+    },
+    "rekorEntryUrl": "",
+    "rekorUuid": "ed25519:96b918980a37723ebd79ef422cd52b12ed32fdd22f73ead6a76ffa4da67b3065",
+    "commitMeta": {
+      "author": "Om Rajpal",
+      "email": "om@agiready.io",
+      "message": "fix(web): rename unused parameter in template summary",
+      "timestamp": "2026-05-16T04:47:07+05:30",
+      "shortSha": "ab8fe71"
+    },
+    "isVerified": true,
+    "source": "cached"
+  },
+  "af17f5c07fc71f8bb0f79339dbe14cf7a661faf6": {
+    "sha": "af17f5c07fc71f8bb0f79339dbe14cf7a661faf6",
+    "predicate": {
+      "schemaVersion": "1.0.0",
+      "authorship": {
+        "kind": "ai-assisted",
+        "humanShare": 0.15,
+        "humanApprover": {
+          "oidcIssuer": "https://github.com",
+          "subject": "Om Rajpal",
+          "approved": true,
+          "timestamp": "2026-05-16T14:32:11Z"
+        }
+      },
+      "agent": {
+        "tool": "ibm-bob",
+        "toolVersion": "1.4.2",
+        "model": "granite-3.3-8b-instruct",
+        "modelProvider": "watsonx.ai"
+      },
+      "execution": {
+        "modeSlug": "provenance-officer",
+        "skillHashes": [
+          {
+            "name": "sign-on-commit",
+            "sha256": "a3f5e2d1c4b6789012345678abcdef0123456789abcdef0123456789abcdef01"
+          }
+        ],
+        "agentsMdHash": "sha256:9c1b3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d",
+        "promptHash": "sha256:4f2e8d1c3b5a7f9e0d2c4b6a8f1e3d5c7b9a0f2e4d6c8b0a2f4e6d8c0b2a4f6e",
+        "planHash": "sha256:7d8a1b2c3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b",
+        "bobSessionId": "639be8ed-e654-4a3b-b912-7c1d8e9f0a1b",
+        "bobcoinsConsumed": 0.52
+      },
+      "scope": {
+        "filesTouched": ["src/auth/login.ts"],
+        "linesAdded": 47,
+        "linesDeleted": 12,
+        "riskClass": "medium"
+      },
+      "policy": {
+        "agentsMdPolicy": "v1",
+        "requiresHumanApproval": true,
+        "satisfied": true
+      }
+    },
+    "rekorEntryUrl": "",
+    "rekorUuid": "ed25519:96b918980a37723ebd79ef422cd52b12ed32fdd22f73ead6a76ffa4da67b3065",
+    "commitMeta": {
+      "author": "Om Rajpal",
+      "email": "om@agiready.io",
+      "message": "feat(demo): add cross-agent attestation and passport demo scripts",
+      "timestamp": "2026-05-16T04:37:26+05:30",
+      "shortSha": "af17f5c"
+    },
+    "isVerified": true,
+    "source": "cached"
+  }
+}

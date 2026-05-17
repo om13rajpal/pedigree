@@ -1,0 +1,7 @@
+bob_sessions/
+pnpm-lock.yaml
+uv.lock
+.next/
+dist/
+node_modules/
+.venv/

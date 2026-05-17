@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "authorship": {
+    "kind": "<human|ai-assisted|ai-autonomous>",
+    "humanShare": "<number 0.0-1.0 or null>",
+    "humanApprover": {
+      "oidcIssuer": "<OIDC provider URL, e.g. https://github.com/login/oauth>",
+      "subject": "<approver email or OIDC subject>",
+      "approved": "<true|false>",
+      "timestamp": "<ISO-8601 timestamp>"
+    }
+  },
+  "agent": {
+    "tool": "<agent tool name, e.g. ibm-bob>",
+    "toolVersion": "<semver version string>",
+    "model": "<model identifier, e.g. granite-3.3-8b-instruct>",
+    "modelProvider": "<provider name, e.g. watsonx.ai>"
+  },
+  "execution": {
+    "modeSlug": "<active Bob mode slug, e.g. provenance-officer>",
+    "skillHashes": [
+      {
+        "name": "<skill slug, e.g. sign-on-commit>",
+        "sha256": "<lowercase hex SHA-256 of the Skill's SKILL.md>"
+      }
+    ],
+    "agentsMdHash": "sha256:<lowercase hex SHA-256 of AGENTS.md>",
+    "promptHash": "sha256:<lowercase hex SHA-256 of the initiating prompt>",
+    "planHash": "sha256:<lowercase hex SHA-256 of the plan document>",
+    "bobSessionId": "<UUID of the current Bob session>",
+    "bobcoinsConsumed": "<number, non-negative>"
+  },
+  "scope": {
+    "filesTouched": ["<relative path of each modified file>"],
+    "linesAdded": "<non-negative integer>",
+    "linesDeleted": "<non-negative integer>",
+    "riskClass": "<low|medium|high>"
+  },
+  "policy": {
+    "agentsMdPolicy": "v1",
+    "requiresHumanApproval": "<true|false>",
+    "satisfied": "<true|false>"
+  }
+}

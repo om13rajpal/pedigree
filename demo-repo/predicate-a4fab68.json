@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1.0.0",
+  "authorship": {
+    "kind": "ai-autonomous",
+    "humanShare": null
+  },
+  "agent": {
+    "tool": "ibm-bob",
+    "toolVersion": "1.0.0",
+    "model": "claude-3-7-sonnet-20250219",
+    "modelProvider": "anthropic"
+  },
+  "execution": {
+    "modeSlug": "advanced",
+    "skillHashes": [
+      {
+        "name": "demo-pipeline",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "agentsMdHash": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+    "promptHash": "sha256:0000000000000000000000000000000000000000000000000000000000000002",
+    "planHash": "sha256:0000000000000000000000000000000000000000000000000000000000000003",
+    "bobSessionId": "demo-session-2026-05-16",
+    "bobcoinsConsumed": 1.0
+  },
+  "scope": {
+    "filesTouched": ["src/helpers/deepClone.ts"],
+    "linesAdded": 38,
+    "linesDeleted": 0,
+    "riskClass": "low"
+  },
+  "policy": {
+    "agentsMdPolicy": "v1",
+    "requiresHumanApproval": false,
+    "satisfied": true
+  }
+}

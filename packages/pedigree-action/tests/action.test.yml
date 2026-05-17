@@ -1,0 +1,65 @@
+# Sample workflow for testing the Pedigree Action with `act` or on a real repo.
+#
+# This file is not executed in CI directly. It serves as a reference
+# for repositories that consume pedigree-action from a local path.
+# To test with `act`: act pull_request -W .github/workflows/pedigree.yml
+
+name: Test Pedigree Action
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  verify-provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch attestation refs
+        run: |
+          git fetch origin 'refs/attestations/*:refs/attestations/*' || true
+
+      - name: Run Pedigree verification
+        id: pedigree
+        uses: ./packages/pedigree-action
+        with:
+          fail-on-unsigned: 'true'
+          comment-on-pr: 'true'
+
+      - name: Report result
+        if: always()
+        run: |
+          echo "Pedigree passed: ${{ steps.pedigree.outputs.passed }}"
+          echo "Report: ${{ steps.pedigree.outputs.report-json }}"
+
+  # Demonstration of a permissive mode that warns but does not block.
+  verify-permissive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch attestation refs
+        run: |
+          git fetch origin 'refs/attestations/*:refs/attestations/*' || true
+
+      - name: Run Pedigree verification (permissive)
+        id: pedigree
+        uses: ./packages/pedigree-action
+        with:
+          fail-on-unsigned: 'false'
+          comment-on-pr: 'true'
+
+      - name: Warn if unsigned commits exist
+        if: steps.pedigree.outputs.passed == 'false'
+        run: |
+          echo "::warning::Some commits lack valid attestations. See PR comment for details."

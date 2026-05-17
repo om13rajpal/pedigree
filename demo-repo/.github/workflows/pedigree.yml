@@ -1,0 +1,22 @@
+name: Pedigree Verification
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  verify-provenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: agiready/pedigree-action@main
+        with:
+          fail-on-unsigned: 'true'
+          comment-on-pr: 'true'

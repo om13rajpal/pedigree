@@ -1,0 +1,44 @@
+{
+  "schemaVersion": "1.0.0",
+  "authorship": {
+    "kind": "ai-assisted",
+    "humanShare": 0.2,
+    "humanApprover": {
+      "oidcIssuer": "https://github.com/login/oauth",
+      "subject": "omrajpal.exe@gmail.com",
+      "approved": true,
+      "timestamp": "2026-05-16T16:08:43Z"
+    }
+  },
+  "agent": {
+    "tool": "ibm-bob",
+    "toolVersion": "1.0.0",
+    "model": "claude-3-7-sonnet-20250219",
+    "modelProvider": "anthropic"
+  },
+  "execution": {
+    "modeSlug": "advanced",
+    "skillHashes": [
+      {
+        "name": "manual-approval",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    ],
+    "agentsMdHash": "sha256:3c1e93d40e0a0cfc863fcedab960c70c457b1fa318d1a4969f0a237e410737ce",
+    "promptHash": "sha256:42251b8413b6be229d450fdc69f8877f52f5721b46b984cc3d65775e116de9b5",
+    "planHash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "bobSessionId": "00000000-0000-0000-0000-000000000000",
+    "bobcoinsConsumed": 0
+  },
+  "scope": {
+    "filesTouched": ["src/auth/session-timeout.ts"],
+    "linesAdded": 174,
+    "linesDeleted": 0,
+    "riskClass": "high"
+  },
+  "policy": {
+    "agentsMdPolicy": "v1",
+    "requiresHumanApproval": true,
+    "satisfied": true
+  }
+}

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedigree Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:1280px 720px;margin:0}
+:root{
+  --teal:#0f766e;--teal-light:#14b8a6;--teal-bg:rgba(15,118,110,0.06);
+  --teal-border:rgba(15,118,110,0.12);
+  --fg:#171717;--fg2:#404040;--fg3:#737373;--fg4:#a3a3a3;
+  --bg:#ffffff;--bg2:#fafafa;--bg3:#f5f5f5;
+  --border:#e5e5e5;--border2:#d4d4d4;
+  --amber:#d97706;--red:#dc2626;--blue:#3b82f6;--violet:#8b5cf6;--emerald:#059669;
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg2);color:var(--fg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+code{font-family:'JetBrains Mono',monospace;font-size:0.85em;background:var(--teal-bg);color:var(--teal);padding:1px 6px;border-radius:4px}
+
+/* SLIDE SYSTEM */
+.s{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden;display:flex;flex-direction:column;page-break-after:always;border-bottom:1px solid var(--border)}
+
+/* HEADER BAR */
+.hdr{position:absolute;top:0;left:0;right:0;height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 36px;border-bottom:1px solid var(--border)}
+.hdr-logo{display:flex;align-items:center;gap:7px}
+.hdr-logo svg{width:18px;height:18px;color:var(--teal)}
+.hdr-logo span{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:12px;color:var(--teal);letter-spacing:2px}
+.hdr-pg{font-size:11px;color:var(--fg4)}
+
+/* CONTENT AREA */
+.body{flex:1;padding:72px 64px 40px;display:flex;flex-direction:column;justify-content:center}
+
+/* BOTTOM ACCENT LINE */
+.s::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-light),var(--teal))}
+
+/* TYPOGRAPHY */
+h1{font-size:48px;font-weight:800;line-height:1.08;letter-spacing:-1.5px;color:var(--fg)}
+h2{font-size:34px;font-weight:700;line-height:1.15;letter-spacing:-0.5px;color:var(--fg);margin-bottom:24px}
+h3{font-size:16px;font-weight:700;color:var(--teal);margin-bottom:10px;letter-spacing:-0.2px}
+.sub{font-size:17px;color:var(--fg2);line-height:1.55;max-width:620px}
+.sub2{font-size:14px;color:var(--fg3);line-height:1.5}
+
+/* LAYOUT */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.g6{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}
+
+/* CARD */
+.c{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:22px}
+.c p{font-size:13.5px;color:var(--fg2);line-height:1.55}
+.c.accent{border-color:var(--teal-border);background:var(--teal-bg)}
+
+/* TAG */
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:5px;margin:2px 4px 2px 0}
+.tag-t{background:var(--teal-bg);color:var(--teal)}
+.tag-a{background:rgba(217,119,6,0.08);color:var(--amber)}
+.tag-r{background:rgba(220,38,38,0.07);color:var(--red)}
+.tag-b{background:rgba(59,130,246,0.07);color:var(--blue)}
+.tag-v{background:rgba(139,92,246,0.07);color:var(--violet)}
+.tag-e{background:rgba(5,150,105,0.07);color:var(--emerald)}
+
+/* LIST */
+ul{list-style:none;padding:0}
+ul li{font-size:15px;color:var(--fg2);padding:7px 0 7px 22px;position:relative;line-height:1.45}
+ul li::before{content:'';position:absolute;left:0;top:14px;width:7px;height:7px;border-radius:50%;background:var(--teal)}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:9px 14px;border-bottom:1px solid var(--border);font-size:13.5px}
+th{color:var(--fg3);font-weight:500;font-size:10.5px;text-transform:uppercase;letter-spacing:1px}
+td{color:var(--fg2)}
+td code{font-size:12px}
+
+/* STAT */
+.stat{text-align:center;padding:16px}
+.stat .n{font-size:44px;font-weight:800;color:var(--teal);letter-spacing:-1px}
+.stat .l{font-size:12px;color:var(--fg3);margin-top:4px;line-height:1.35}
+
+/* PIPELINE */
+.pipe{display:flex;align-items:flex-start;gap:4px}
+.node{flex:1;text-align:center;background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:9px;padding:14px 6px}
+.node svg{width:26px;height:26px;margin:0 auto 5px;display:block;color:var(--teal)}
+.node .nm{font-size:11px;font-weight:600;color:var(--fg)}
+.node .ds{font-size:9.5px;color:var(--fg3);margin-top:1px}
+.arr{display:flex;align-items:center;padding-top:14px;color:var(--border2)}
+.arr svg{width:16px;height:16px}
+
+/* CODE BLOCK */
+.cb{background:#0a0a0a;border-radius:9px;padding:16px 18px;font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.6;color:#34d399;border:1px solid #262626}
+.k{color:#38bdf8}.st{color:#34d399}.bl{color:#a78bfa}.nu{color:#fbbf24}
+
+/* ICON CIRCLE */
+.ic{width:48px;height:48px;border-radius:12px;background:var(--teal-bg);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.ic svg{width:24px;height:24px;color:var(--teal)}
+
+/* TITLE SLIDE SPECIAL */
+.title-center{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;height:100%}
+
+/* SUBTLE BG PATTERN */
+.bg-dots{background-image:radial-gradient(circle,var(--border) 0.8px,transparent 0.8px);background-size:24px 24px;background-position:12px 12px}
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<div class="s bg-dots">
+  <div class="hdr">
+    <div class="hdr-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      <span>PEDIGREE</span>
+    </div>
+    <div class="hdr-pg">
+      <span class="tag tag-t">IBM Bob Hackathon 2026</span>
+    </div>
+  </div>
+  <div class="body title-center">
+    <div class="ic" style="width:56px;height:56px;border-radius:14px;margin-bottom:20px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:28px;height:28px"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+    </div>
+    <h1 style="font-size:64px;margin-bottom:16px">Pedigree</h1>
+    <p class="sub" style="text-align:center;max-width:500px;margin-bottom:8px">
+      Cryptographic provenance for AI-written code.
+    </p>
+    <p style="font-size:15px;color:var(--teal);font-weight:600;margin-bottom:32px">
+      Every AI commit gets a signed, verifiable Code Passport.
+    </p>
+    <div style="display:flex;gap:8px;margin-bottom:28px">
+      <span class="tag tag-t">C2PA for Source Code</span>
+      <span class="tag tag-t">in-toto + Sigstore</span>
+      <span class="tag tag-t">MCP Server</span>
+    </div>
+    <p style="font-size:13px;color:var(--fg4)">Om Rajpal &bull; AGI Ready &bull; May 2026</p>
+  </div>
+  <div class="hdr-pg" style="position:absolute;bottom:12px;right:36px">1 / 12</div>
+</div>
+
+<!-- ==================== SLIDE 2: PROBLEM ==================== -->
+<div class="s">
+  <div class="hdr">
+    <div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div>
+    <div class="hdr-pg">2 / 12</div>
+  </div>
+  <div class="body">
+    <h2>The Problem</h2>
+    <div class="g2">
+      <div>
+        <ul>
+          <li><span style="color:var(--amber);font-weight:600">42% of code</span> committed today is AI-assisted (GitHub, 2025)</li>
+          <li><span style="color:var(--red);font-weight:600">EU AI Act Article 50</span> mandates disclosure of AI-generated content</li>
+          <li>Enforcement begins <strong>August 2, 2026</strong>. Fines reach <span style="color:var(--red)">3% of global revenue</span></li>
+          <li><code>git blame</code> shows who committed. It does NOT show who or what <em>wrote</em> the code</li>
+        </ul>
+      </div>
+      <div class="c accent" style="display:flex;flex-direction:column;justify-content:center">
+        <h3 style="color:var(--red)">
+          <svg style="width:16px;height:16px;vertical-align:-2px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          The Gap
+        </h3>
+        <p style="font-size:15px;color:var(--fg2);line-height:1.55">
+          C2PA exists for images and video.<br>
+          <strong style="color:var(--teal)">Nothing exists for source code.</strong>
+        </p>
+        <p style="margin-top:12px;font-size:14px;color:var(--fg3)">
+          No standard records which model wrote which function, who approved it, or whether a human was involved at all.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 3: SOLUTION ==================== -->
+<div class="s">
+  <div class="hdr">
+    <div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div>
+    <div class="hdr-pg">3 / 12</div>
+  </div>
+  <div class="body">
+    <h2>Pedigree: C2PA for Source Code</h2>
+    <p class="sub" style="margin-bottom:20px">A cryptographic provenance layer that signs every AI-authored commit with a tamper-evident attestation, anchored in a public transparency log.</p>
+    <div class="pipe">
+      <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg><div class="nm">Code Written</div><div class="ds">Human or AI</div></div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/></svg><div class="nm">Bob Detects</div><div class="ds">Provenance Officer</div></div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg><div class="nm">Predicate Built</div><div class="ds">MCP assembles</div></div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg><div class="nm">DSSE Signed</div><div class="ds">ed25519 keypair</div></div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg><div class="nm">Rekor Logged</div><div class="ds">Transparency log</div></div>
+      <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+      <div class="node"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><div class="nm">Passport Ready</div><div class="ds">Verifiable</div></div>
+    </div>
+    <div style="margin-top:20px">
+      <span class="tag tag-t">in-toto Statement v1</span>
+      <span class="tag tag-t">DSSE Envelope</span>
+      <span class="tag tag-t">ed25519</span>
+      <span class="tag tag-t">Sigstore Rekor</span>
+      <span class="tag tag-t">MCP Server</span>
+      <span class="tag tag-t">Web Crypto ECDSA P-256</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 4: THREE SCENARIOS ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">4 / 12</div></div>
+  <div class="body">
+    <h2>Three Authorship Scenarios</h2>
+    <div class="g3" style="gap:16px">
+      <div class="c" style="border-top:3px solid var(--blue)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <h3 style="color:var(--blue);margin:0;font-size:15px">Human Only</h3>
+        </div>
+        <p>Developer writes every line. No AI involvement. No approval gate needed.</p>
+        <div style="margin-top:14px"><span class="tag tag-b">kind: human</span><span class="tag tag-b">humanShare: 1.0</span></div>
+      </div>
+      <div class="c" style="border-top:3px solid var(--violet)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--violet)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <h3 style="color:var(--violet);margin:0;font-size:15px">AI-Assisted</h3>
+        </div>
+        <p>Human and AI collaborate. Human edits AI output. ECDSA approval signature required.</p>
+        <div style="margin-top:14px"><span class="tag tag-v">kind: ai-assisted</span><span class="tag tag-v">humanShare: 0.0 to 1.0</span></div>
+      </div>
+      <div class="c" style="border-top:3px solid var(--amber)">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="3"/></svg>
+          <h3 style="color:var(--amber);margin:0;font-size:15px">AI Autonomous</h3>
+        </div>
+        <p>AI generates code independently. Human only approves. Model identity cryptographically recorded.</p>
+        <div style="margin-top:14px"><span class="tag tag-a">kind: ai-autonomous</span><span class="tag tag-a">humanShare: null</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 5: BOB INTEGRATION ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">5 / 12</div></div>
+  <div class="body">
+    <h2>Built with IBM Bob</h2>
+    <div class="g2">
+      <div>
+        <h3>
+          <svg style="width:14px;height:14px;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Custom Mode: Provenance Officer
+        </h3>
+        <ul>
+          <li>Reads AGENTS.md for risk classification</li>
+          <li>Gates HIGH-risk commits on human approval</li>
+          <li>Computes SHA-256 content hashes for every field</li>
+          <li>Invokes pedigree-mcp via MCP protocol</li>
+          <li>Refuses to push unsigned commits</li>
+        </ul>
+      </div>
+      <div>
+        <h3>
+          <svg style="width:14px;height:14px;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          3 Custom Skills
+        </h3>
+        <table>
+          <tr><th>Skill</th><th>Purpose</th></tr>
+          <tr><td><code>sign-on-commit</code></td><td>Pre-commit attestation signing</td></tr>
+          <tr><td><code>verify-chain</code></td><td>CI attestation verification</td></tr>
+          <tr><td><code>render-passport</code></td><td>Passport page data rendering</td></tr>
+        </table>
+        <div style="margin-top:18px">
+          <h3>
+            <svg style="width:14px;height:14px;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            MCP Server: pedigree-mcp
+          </h3>
+          <p class="sub2">FastMCP Python server exposing <code>attest_commit</code>, <code>verify_chain</code>, <code>render_passport</code>. Works with Bob, Cursor, Windsurf, any MCP client.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 6: MULTI-MODEL ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">6 / 12</div></div>
+  <div class="body">
+    <h2>6 AI Models, One Provenance Standard</h2>
+    <p class="sub" style="margin-bottom:18px">Switch models freely. The attestation always records which model wrote which code.</p>
+    <table>
+      <tr><th>Model</th><th>Provider</th><th>Recorded in Predicate</th></tr>
+      <tr><td>Gemini 2.5 Flash</td><td>Google</td><td><code>google/gemini-2.5-flash</code></td></tr>
+      <tr><td>GPT-4o Mini</td><td>OpenAI</td><td><code>openai/gpt-4o-mini</code></td></tr>
+      <tr><td>Claude 3.5 Haiku</td><td>Anthropic</td><td><code>anthropic/claude-3.5-haiku</code></td></tr>
+      <tr><td>Granite 4.1 8B</td><td>IBM</td><td><code>ibm-granite/granite-4.1-8b</code></td></tr>
+      <tr><td>Llama 3.3 70B</td><td>Meta</td><td><code>meta-llama/llama-3.3-70b</code></td></tr>
+      <tr><td>Grok 4.3</td><td>xAI</td><td><code>x-ai/grok-4.3</code></td></tr>
+    </table>
+    <div style="margin-top:16px">
+      <span class="tag tag-t">Real generation via OpenRouter</span>
+      <span class="tag tag-t">Vercel AI SDK</span>
+      <span class="tag tag-t">Prompt hash in predicate</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 7: CRYPTO ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">7 / 12</div></div>
+  <div class="body">
+    <h2>Real Cryptography, Zero Mock Data</h2>
+    <div class="g2">
+      <div class="cb" style="font-size:11px;align-self:center">
+<span class="k">"authorship"</span>: {
+  <span class="k">"kind"</span>: <span class="st">"ai-autonomous"</span>,
+  <span class="k">"humanApprover"</span>: {
+    <span class="k">"approved"</span>: <span class="bl">true</span>,
+    <span class="k">"approvalSig"</span>: <span class="st">"3045022100..."</span>,
+    <span class="k">"approvalPubKey"</span>: <span class="st">"04a1b2..."</span>
+  }
+},
+<span class="k">"agent"</span>: {
+  <span class="k">"model"</span>: <span class="st">"google/gemini-2.5-flash"</span>,
+  <span class="k">"modelProvider"</span>: <span class="st">"google"</span>
+},
+<span class="k">"scope"</span>: {
+  <span class="k">"riskClass"</span>: <span class="st">"high"</span>,
+  <span class="k">"linesAdded"</span>: <span class="nu">174</span>
+}</div>
+      <div>
+        <h3>
+          <svg style="width:14px;height:14px;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          Every field is real
+        </h3>
+        <ul>
+          <li><strong>ed25519 DSSE</strong> signing with real keypair</li>
+          <li><strong>in-toto Statement v1</strong> standard format</li>
+          <li><strong>Rekor</strong> public transparency log entries</li>
+          <li><strong>Web Crypto ECDSA P-256</strong> browser approval</li>
+          <li><strong>GitHub API</strong> for real commits to public repo</li>
+          <li><strong>Prompt hash</strong> SHA-256 of actual user prompt</li>
+        </ul>
+        <div style="margin-top:14px">
+          <span class="tag tag-e">Verifiable by anyone</span>
+          <span class="tag tag-e">Tamper-evident</span>
+          <span class="tag tag-e">Publicly auditable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 8: LIVE DEMO ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">8 / 12</div></div>
+  <div class="body">
+    <h2>Live Demo</h2>
+    <div class="g2">
+      <div>
+        <h3>
+          <svg style="width:14px;height:14px;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Interactive Playground
+        </h3>
+        <ul>
+          <li>Pick any of 6 AI models from dropdown</li>
+          <li>Type a prompt, generate real code</li>
+          <li>Review and approve (ECDSA browser signature)</li>
+          <li>Sign & Push (commit + DSSE + Rekor)</li>
+          <li>View Code Passport with chain of custody</li>
+          <li>Scan QR code for mobile verification</li>
+          <li>Click through to real Sigstore Rekor entry</li>
+        </ul>
+      </div>
+      <div>
+        <h3>
+          <svg style="width:14px;height:14px;vertical-align:-1px;margin-right:4px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          7 Pages
+        </h3>
+        <table>
+          <tr><td><code>/</code></td><td>Landing page</td></tr>
+          <tr><td><code>/demo</code></td><td>Interactive playground</td></tr>
+          <tr><td><code>/how-it-works</code></td><td>Architecture + deep dive</td></tr>
+          <tr><td><code>/setup</code></td><td>MCP install guide</td></tr>
+          <tr><td><code>/passport/[sha]</code></td><td>Chain of custody</td></tr>
+          <tr><td><code>/verify/[sha]</code></td><td>QR mobile verification</td></tr>
+          <tr><td><code>/docs/predicate-spec</code></td><td>RFC specification</td></tr>
+        </table>
+        <div style="margin-top:14px;padding:10px 14px;background:var(--teal-bg);border:1px solid var(--teal-border);border-radius:8px;text-align:center">
+          <span style="font-family:'JetBrains Mono';font-size:14px;color:var(--teal);font-weight:600">ibm-lilac.vercel.app</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 9: ARCHITECTURE ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">9 / 12</div></div>
+  <div class="body">
+    <h2>Architecture</h2>
+    <div class="g2">
+      <div>
+        <h3>Monorepo (4 packages)</h3>
+        <table>
+          <tr><td><code>pedigree-types</code></td><td>Zod schema (canonical source of truth)</td></tr>
+          <tr><td><code>pedigree-mcp</code></td><td>Python FastMCP server</td></tr>
+          <tr><td><code>pedigree-web</code></td><td>Next.js 14 App Router frontend</td></tr>
+          <tr><td><code>pedigree-action</code></td><td>GitHub Actions CI composite</td></tr>
+        </table>
+      </div>
+      <div>
+        <h3>Tech Stack</h3>
+        <table>
+          <tr><td>Frontend</td><td>Next.js 14, Tailwind, Framer Motion</td></tr>
+          <tr><td>Backend</td><td>FastMCP (Python), Vercel Functions</td></tr>
+          <tr><td>Signing</td><td>ed25519, DSSE, Sigstore Fulcio</td></tr>
+          <tr><td>Log</td><td>Rekor public transparency log</td></tr>
+          <tr><td>AI</td><td>Vercel AI SDK + OpenRouter</td></tr>
+          <tr><td>Approval</td><td>Web Crypto ECDSA P-256</td></tr>
+          <tr><td>Deploy</td><td>Vercel + GitHub API</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 10: BOB SESSIONS ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">10 / 12</div></div>
+  <div class="body">
+    <h2>14 Bob Sessions</h2>
+    <table style="font-size:12.5px">
+      <tr><th style="width:30px">#</th><th>Session</th><th>Demonstrates</th></tr>
+      <tr><td>01</td><td>init-agents-md</td><td>Bob <code>/init</code> generating AGENTS.md policy</td></tr>
+      <tr><td>02</td><td>plan-architecture</td><td>Plan mode drafting predicate spec</td></tr>
+      <tr><td>03</td><td>create-mode</td><td>provenance-officer custom mode creation</td></tr>
+      <tr><td>04</td><td>create-skill</td><td>Three custom Skills</td></tr>
+      <tr><td>05</td><td>mcp-builder-server</td><td>MCP Builder scaffolding pedigree-mcp</td></tr>
+      <tr><td>06-07</td><td>implement-*</td><td>Sigstore + ed25519 signer implementation</td></tr>
+      <tr><td>08</td><td>build-action</td><td>GitHub Actions CI verification script</td></tr>
+      <tr><td>09</td><td>cross-agent-mcp</td><td>Cross-agent MCP consumption demo</td></tr>
+      <tr><td>10-11</td><td>sign-commit-pipeline</td><td>Live signing with self-correction</td></tr>
+      <tr><td>12</td><td>high-risk-approval</td><td>HIGH risk gate + human approval flow</td></tr>
+      <tr><td>13</td><td>verify-attestation</td><td>Chain verification + EU AI Act audit</td></tr>
+      <tr><td>14</td><td>render-passport</td><td>Passport data rendering for web</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 11: BUSINESS VALUE ==================== -->
+<div class="s">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">11 / 12</div></div>
+  <div class="body">
+    <h2>Business Value</h2>
+    <div class="g3" style="margin-bottom:24px">
+      <div class="c stat"><div class="n">$35M+</div><div class="l">Maximum EU AI Act fine<br>per violation (3% revenue)</div></div>
+      <div class="c stat"><div class="n">42%</div><div class="l">Of code is AI-assisted<br>(GitHub, 2025)</div></div>
+      <div class="c stat"><div class="n">78d</div><div class="l">Until enforcement<br>(August 2, 2026)</div></div>
+    </div>
+    <div class="g3">
+      <div class="c"><h3 style="font-size:14px">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg>
+        Enterprises</h3><p>Using AI coding tools, need compliance audit trails before August 2026</p></div>
+      <div class="c"><h3 style="font-size:14px">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Regulators</h3><p>Need to verify which code was AI-generated in software audits</p></div>
+      <div class="c"><h3 style="font-size:14px">
+        <svg style="width:14px;height:14px;vertical-align:-2px;margin-right:3px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Procurement</h3><p>Evaluating AI-generated software in supply chain assessments</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== SLIDE 12: CLOSING ==================== -->
+<div class="s bg-dots">
+  <div class="hdr"><div class="hdr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg><span>PEDIGREE</span></div><div class="hdr-pg">12 / 12</div></div>
+  <div class="body title-center">
+    <div class="ic" style="margin-bottom:18px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+    </div>
+    <h1 style="font-size:46px;margin-bottom:8px">Every AI commit<br>deserves a <span style="color:var(--teal)">passport</span>.</h1>
+    <p style="font-size:15px;color:var(--fg3);margin-bottom:40px">So your codebase can survive August 2, 2026.</p>
+    <div style="display:flex;gap:48px;justify-content:center">
+      <div style="text-align:center">
+        <div style="font-size:10px;color:var(--fg4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">Live Demo</div>
+        <div style="font-family:'JetBrains Mono';font-size:14px;color:var(--teal);font-weight:500">ibm-lilac.vercel.app</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:10px;color:var(--fg4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">GitHub</div>
+        <div style="font-family:'JetBrains Mono';font-size:14px;color:var(--teal);font-weight:500">github.com/om13rajpal/pedigree</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:10px;color:var(--fg4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:5px">Builder</div>
+        <div style="font-family:'JetBrains Mono';font-size:14px;color:var(--teal);font-weight:500">Om Rajpal / AGI Ready</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "subject": [
+    {
+      "name": "git+commit",
+      "digest": { "sha1": "b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3" }
+    }
+  ],
+  "predicateType": "dev.pedigree/ai-authorship/v1",
+  "predicate": {
+    "schemaVersion": "1.0.0",
+    "authorship": {
+      "kind": "human",
+      "humanShare": 1.0
+    },
+    "scope": {
+      "filesTouched": ["docs/README.md"],
+      "linesAdded": 10,
+      "linesDeleted": 2,
+      "riskClass": "low"
+    },
+    "policy": {
+      "agentsMdPolicy": "v1",
+      "requiresHumanApproval": false,
+      "satisfied": true
+    }
+  }
+}

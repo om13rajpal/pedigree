@@ -1,0 +1,47 @@
+{
+  "_type": "https://in-toto.io/Statement/v1",
+  "subject": [
+    {
+      "name": "git+commit",
+      "digest": { "sha1": "d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5" }
+    }
+  ],
+  "predicateType": "dev.pedigree/ai-authorship/v1",
+  "predicate": {
+    "schemaVersion": "1.0.0",
+    "authorship": {
+      "humanShare": 0.5
+    },
+    "agent": {
+      "tool": "ibm-bob",
+      "toolVersion": "1.4.2",
+      "model": "granite-3.3-8b-instruct",
+      "modelProvider": "watsonx.ai"
+    },
+    "execution": {
+      "modeSlug": "provenance-officer",
+      "skillHashes": [
+        {
+          "name": "sign-on-commit",
+          "sha256": "a3f5e2d1c4b6a8f0e2d4c6b8a0f2e4d6c8b0a2f4e6d8c0b2a4f6e8d0c2b4a6"
+        }
+      ],
+      "agentsMdHash": "sha256:9c1b3e5d7f9a1c3e5d7f9a1c3e5d7f9a1c3e5d7f9a1c3e5d7f9a1c3e5d7f9a1c",
+      "promptHash": "sha256:4f2e6d8c0b2a4f6e8d0c2b4a6f8e0d2c4b6a8f0e2d4c6b8a0f2e4d6c8b0a2f4",
+      "planHash": "sha256:7d8a0c2e4f6b8d0a2c4e6f8b0d2a4c6e8f0b2d4a6c8e0f2b4d6a8c0e2f4b6d8",
+      "bobSessionId": "639be8ed-e654-4a1b-9c3d-5e7f9a1b3c5d",
+      "bobcoinsConsumed": 0.52
+    },
+    "scope": {
+      "filesTouched": ["src/auth/login.ts"],
+      "linesAdded": 47,
+      "linesDeleted": 12,
+      "riskClass": "medium"
+    },
+    "policy": {
+      "agentsMdPolicy": "v1",
+      "requiresHumanApproval": true,
+      "satisfied": true
+    }
+  }
+}
